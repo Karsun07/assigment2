@@ -14,7 +14,7 @@ export default function Body() {
 
         {/* for searching a user */}
         <input type="text" placeholder="enter username" value={findUser} onChange={(e)=>setFindUser(e.target.value)}></input>
-        <button onClick={()=>generateUser(findUser)}>Find User</button>
+        <button onClick={()=>generateUser(findUser)}>Find Username</button>
 
         {/* displaying profiles*/}
         <div className="githubProfiles">

@@ -13,11 +13,13 @@ export default function UseFetch(){
       `https://api.github.com/users?since=${ran}&per_page=${count}`
     );
     const data = await response.json();
+    setNumberofProfiles("");
     setProfiles(data);
   }
   async function generateUser(userName){
     const response=await fetch(`https://api.github.com/users/${userName}`);
     const data=await response.json();
+    setFindUser("");
     setProfiles([data]);
   }
 //  for showing 10 profiles initially
