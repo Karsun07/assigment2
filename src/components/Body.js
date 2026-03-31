@@ -5,7 +5,7 @@ export default function Body() {
 //  state for generating no. of profiles given by user
   const [numberofProfiles,setNumberofProfiles]=useState("");
 // state for finding a user
-   const [findUser,setFindUser]=useState("");
+   const [findUser,setFindUser]=useState([]);
 
   async function generateProfiles(count) {
     const ran = Math.floor(Math.random() * 1000); 
@@ -15,8 +15,12 @@ export default function Body() {
     const data = await response.json();
     setProfiles(data);
   }
- 
-
+  async function generateUser(userName){
+    const response=await fetch(`https://api.github.com/users/${userName}`);
+    const data=await response.json();
+    setProfiles([data]);
+  }
+//  for showing 10 profiles initially
   useEffect(() => {
     generateProfiles(10);
   }, []);
@@ -29,8 +33,11 @@ export default function Body() {
         </input>
         <button onClick={() => generateProfiles(Number(numberofProfiles))}>Search Profiles</button>
 
-        
+        {/* for searching a user */}
+        <input type="text" placeholder="enter username" value={findUser} onChange={(e)=>setFindUser(e.target.value)}></input>
+        <button onClick={()=>generateUser(findUser)}>Find User</button>
 
+        {/* displaying profiles*/}
         <div className="githubProfiles">
         {Array.isArray(profiles) &&
         profiles.map((value) => (
