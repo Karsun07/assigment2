@@ -1,0 +1,135 @@
+body {
+  background-color: #060223;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+#heading {
+  text-align: center;
+  color: #adff2f;
+  margin-top: 20px;
+  font-size: clamp(20px, 4vw, 32px);
+}
+
+input {
+  border: none;
+  border-radius: 6px;
+  outline: none;
+  width: 250px;
+  max-width: 80%;
+  height: 35px;
+  margin: 20px auto;
+  padding: 5px 10px;
+  display: block;
+}
+
+.githubProfiles {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  justify-items: center;
+  gap: 30px;
+  max-width: 1400px;
+  margin: auto;
+  padding: 40px;
+  display: grid;
+}
+
+.allprofiles {
+  text-align: center;
+  backdrop-filter: blur(10px);
+  background: #ffffff0d;
+  border: 1px solid #fff3;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 220px;
+  padding: 20px;
+  transition: all .3s;
+}
+
+.allprofiles:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px #adff2f99;
+}
+
+img {
+  object-fit: cover;
+  border: 3px solid #adff2f;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+
+h2 {
+  color: #adff2f;
+  margin: 15px 0;
+}
+
+a {
+  color: #fff;
+  border: 1px solid #adff2f;
+  border-radius: 6px;
+  margin-top: 10px;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: all .3s;
+  display: inline-block;
+}
+
+a:hover {
+  color: #000;
+  background: #adff2f;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  height: 40px;
+  padding: 0 12px;
+  transition: all .3s ease-in;
+  position: relative;
+  bottom: 63px;
+  left: 950px;
+}
+
+button:hover {
+  color: #000;
+  background-color: #adff2f;
+}
+
+@media (width <= 600px) {
+  .githubProfiles {
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .allprofiles {
+    max-width: 280px;
+  }
+
+  img {
+    width: 120px;
+    height: 120px;
+  }
+
+  button {
+    margin-top: 10px;
+    display: block;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (width <= 900px) {
+  .githubProfiles {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  button {
+    bottom: 50px;
+    left: 70%;
+  }
+}
+/*# sourceMappingURL=assignment2.3a01df49.css.map */
