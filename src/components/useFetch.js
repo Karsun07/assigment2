@@ -1,28 +1,45 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 
-export default function UseFetch(){
-    const [profiles, setProfiles] = useState([]);
-//  state for generating no. of profiles given by user
-  const [numberofProfiles,setNumberofProfiles]=useState("");
-// state for finding a user
-   const [findUser,setFindUser]=useState([]);
+export default function UseFetch() {
+  const [profiles, setProfiles] = useState([]);
+  const [numberofProfiles, setNumberofProfiles] = useState("");
+  const [findUser, setFindUser] = useState([]);
 
   async function generateProfiles(count) {
-    const ran = Math.floor(Math.random() * 1000); 
-    const response = await fetch(
-      `https://api.github.com/users?since=${ran}&per_page=${count}`
-    );
-    const data = await response.json();
-    setNumberofProfiles("");
-    setProfiles(data);
+    try {
+      const ran = Math.floor(Math.random() * 1000);
+      const response = await fetch(
+        `https://api.github.com/users?since=${ran}&per_page=${count}`
+      );
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setNumberofProfiles("");
+      setProfiles(data);
+    } catch (error) {
+      console.error("Error fetching profiles:", error);
+    }
   }
-  async function generateUser(userName){
-    const response=await fetch(`https://api.github.com/users/${userName}`);
-    const data=await response.json();
-    setFindUser("");
-    setProfiles([data]);
+
+  async function generateUser(userName) {
+    try {
+      const response = await fetch(
+        `https://api.github.com/users/${userName}`
+      );
+      if (!response.ok) {
+        throw new Error(`User not found: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setFindUser("");
+      setProfiles([data]);
+    } catch (error) {
+      console.error("Error fetching user:", error);
+    }
   }
-//  for showing 10 profiles initially
+
   useEffect(() => {
     generateProfiles(10);
   }, []);
