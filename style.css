@@ -6,17 +6,31 @@ body{
     font-family:Arial, Helvetica, sans-serif;
 }
 
-
+/* Heading */
 #heading{
     text-align:center;
     color:greenyellow;
     margin-top:20px;
+    font-size:clamp(20px, 4vw, 32px);
 }
 
+/* Input */
+input{
+    display:block;
+    margin:20px auto;
+    height:35px;
+    width:250px;
+    max-width:80%;
+    border-radius:6px;
+    border:none;
+    padding:5px 10px;
+    outline:none;
+}
 
+/* Grid */
 .githubProfiles{
     display:grid;
-    grid-template-columns:repeat(5,1fr);
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
     gap:30px;
     padding:40px;
     max-width:1400px;
@@ -24,9 +38,10 @@ body{
     justify-items:center;
 }
 
-
+/* Cards */
 .allprofiles{
-    width:220px;
+    width:100%;
+    max-width:220px;
     padding:20px;
     text-align:center;
     border-radius:12px;
@@ -36,13 +51,12 @@ body{
     transition:all 0.3s ease;
 }
 
-
 .allprofiles:hover{
     transform:translateY(-10px);
     box-shadow:0 0 20px rgba(173,255,47,0.6);
 }
 
-
+/* Image */
 img{
     width:150px;
     height:150px;
@@ -51,11 +65,13 @@ img{
     border:3px solid greenyellow;
 }
 
-
+/* Name */
 h2{
     color:greenyellow;
     margin:15px 0;
 }
+
+/* Link */
 a{
     display:inline-block;
     margin-top:10px;
@@ -71,21 +87,56 @@ a:hover{
     background:greenyellow;
     color:black;
 }
-button{
-    height: 25px;
-    
-    color: black;
-    
-    transition: 0.3s ease-in;
-}
-button:hover{
-    background-color: greenyellow;
-    color: white;
 
+/* Button */
+button{
+    height:40px;
+    padding:0 12px;
+    border-radius:6px;
+    border:none;
+    cursor:pointer;
+    transition:0.3s ease-in;
+    position:relative;
+    left: 950px;
+    bottom: 63px;
 }
-input{
-    height: 20px;
-    margin-left: 40vw;
-    margin-right: 10px;
-    margin-bottom: 20px;
+
+button:hover{
+    background-color:greenyellow;
+    color:black;
+}
+
+/* Mobile */
+@media (max-width: 600px){
+    .githubProfiles{
+        gap:20px;
+        padding:20px;
+    }
+
+    .allprofiles{
+        max-width:280px;
+    }
+
+    img{
+        width:120px;
+        height:120px;
+    }
+    button{
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        display:block;
+        margin-top:10px;
+    }
+}
+
+/* Tablet */
+@media (max-width: 900px){
+    .githubProfiles{
+        grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+    }
+    button{
+        left: 70%;
+        bottom: 50px;
+    }
 }
